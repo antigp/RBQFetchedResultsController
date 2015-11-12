@@ -40,7 +40,7 @@ RLM_ARRAY_TYPE(RBQSectionCacheObject)
 /**
  *  Hash for RBQFetchRequest to monitor if cache needs rebuilt
  */
-@property NSInteger fetchRequestHash;
+@property long long fetchRequestHash;
 
 /**
  *  Used to track if the cache was processing while app is terminated
@@ -48,6 +48,7 @@ RLM_ARRAY_TYPE(RBQSectionCacheObject)
  *  @warning If cache is not ready, when requested, it will be rebuilt (this can occur if the app is forced closed while the cache is processing.
  */
 @property NSInteger state DEPRECATED_MSG_ATTRIBUTE("Do not use.");
+@property long long state DEPRECATED_MSG_ATTRIBUTE("Do not use.");
 
 /**
  *  Used to track the current section name key path if any for the cache
@@ -73,7 +74,7 @@ RLM_ARRAY_TYPE(RBQSectionCacheObject)
  *  @return A new instance of RBQFetchedResultsControllerCacheObject
  */
 + (instancetype)cacheWithName:(NSString *)name
-             fetchRequestHash:(NSInteger)hash;
+             fetchRequestHash:(long long)hash;
 
 @end
 

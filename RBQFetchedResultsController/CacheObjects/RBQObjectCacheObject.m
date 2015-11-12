@@ -101,7 +101,7 @@
         return [realm objectWithClassName:cacheObject.className forPrimaryKey:cacheObject.primaryKeyStringValue];
     }
     else if (cacheObject.primaryKeyType == RLMPropertyTypeInt) {
-        NSNumber *numberFromString = @(cacheObject.primaryKeyStringValue.integerValue);
+        NSNumber *numberFromString = @(cacheObject.primaryKeyStringValue.longLongValue);
         
         return [realm objectWithClassName:cacheObject.className forPrimaryKey:numberFromString];
     }
@@ -138,7 +138,7 @@
     else if (self.primaryKeyType == RLMPropertyTypeInt &&
              object.primaryKeyType == RLMPropertyTypeInt) {
         
-        return self.primaryKeyStringValue.integerValue == object.primaryKeyStringValue.integerValue;
+        return self.primaryKeyStringValue.longLongValue == object.primaryKeyStringValue.longLongValue;
     }
     else {
         return [super isEqual:object];

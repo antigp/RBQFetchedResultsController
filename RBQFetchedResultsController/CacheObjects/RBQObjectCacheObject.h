@@ -37,7 +37,7 @@
  * @warning Only supports RLMPropertyTypeInt and RLMPropertyTypeString, which are the only
  * supported Realm primary key types as of v0.90.5.
  */
-@property NSInteger primaryKeyType;
+@property long long primaryKeyType;
 
 /**
  *  Value for the section (i.e. the section name)

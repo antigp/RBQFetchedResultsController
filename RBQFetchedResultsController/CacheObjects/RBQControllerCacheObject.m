@@ -11,7 +11,7 @@
 @implementation RBQControllerCacheObject
 
 + (instancetype)cacheWithName:(NSString *)name
-             fetchRequestHash:(NSInteger)hash
+             fetchRequestHash:(long long)hash
 {
     RBQControllerCacheObject *cache = [[RBQControllerCacheObject alloc] init];
     cache.name = name;

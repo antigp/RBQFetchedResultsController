@@ -106,12 +106,12 @@ realmConfiguration = _realmConfiguration;
 
 #pragma mark - Hash
 
-- (NSUInteger)hash
+- (long long)hash
 {
     if (self.predicate &&
         self.sortDescriptors) {
         
-        NSUInteger sortHash = 1;
+        long long sortHash = 1;
         
         for (RLMSortDescriptor *sortDescriptor in self.sortDescriptors) {
             sortHash = sortHash ^ sortDescriptor.hash;

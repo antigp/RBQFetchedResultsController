@@ -26,12 +26,12 @@ RLM_ARRAY_TYPE(RBQObjectCacheObject)
 /**
  *  Index of the first object contained within the section
  */
-@property NSInteger firstObjectIndex;
+@property long long firstObjectIndex;
 
 /**
  *  Index of the first object contained within the section
  */
-@property NSInteger lastObjectIndex;
+@property long long lastObjectIndex;
 
 /**
  *  Sorted RBQFetchedResultsCacheObjects in section

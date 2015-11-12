@@ -471,8 +471,8 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
         RBQObjectCacheObject *cacheObject =
         [RBQObjectCacheObject objectInRealm:cacheRealm forPrimaryKey:primaryKeyStringValue];
         
-        NSInteger sectionIndex = [cache.sections indexOfObject:cacheObject.section];
-        NSInteger rowIndex = [cacheObject.section.objects indexOfObject:cacheObject];
+        long long sectionIndex = [cache.sections indexOfObject:cacheObject.section];
+        long long rowIndex = [cacheObject.section.objects indexOfObject:cacheObject];
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowIndex inSection:sectionIndex];
         
@@ -493,8 +493,8 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
         [RBQObjectCacheObject cacheObjectInRealm:cacheRealm
                                        forObject:object];
         
-        NSInteger sectionIndex = [cache.sections indexOfObject:cacheObject.section];
-        NSInteger rowIndex = [cacheObject.section.objects indexOfObject:cacheObject];
+        long long sectionIndex = [cache.sections indexOfObject:cacheObject.section];
+        long long rowIndex = [cacheObject.section.objects indexOfObject:cacheObject];
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowIndex inSection:sectionIndex];
         
@@ -528,7 +528,7 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
     return 0;
 }
 
-- (NSString *)titleForHeaderInSection:(NSInteger)section
+- (NSString *)titleForHeaderInSection:(long long)section
 {
     RBQControllerCacheObject *cache = [self cache];
     
@@ -1144,8 +1144,8 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
         if (sectionResults.count > 0) {
             RLMObject *firstObject = [sectionResults firstObject];
             RLMObject *lastObject = [sectionResults lastObject];
-            NSInteger firstObjectIndex = [state.fetchResults indexOfObject:firstObject];
-            NSInteger lastObjectIndex = [state.fetchResults indexOfObject:lastObject];
+            long long firstObjectIndex = [state.fetchResults indexOfObject:firstObject];
+            long long lastObjectIndex = [state.fetchResults indexOfObject:lastObject];
             
             // Write change to object index to cache Realm
             [state.cacheRealm beginWriteTransaction];
@@ -1219,9 +1219,9 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
     if (oldSectionForObject &&
         objectChange.previousCacheObject) {
         
-        NSInteger oldSectionIndex = [sectionChanges.oldCacheSections indexOfObject:oldSectionForObject];
+        long long oldSectionIndex = [sectionChanges.oldCacheSections indexOfObject:oldSectionForObject];
         
-        NSInteger oldRowIndex = [oldSectionForObject.objects indexOfObject:objectChange.previousCacheObject];
+        long long oldRowIndex = [oldSectionForObject.objects indexOfObject:objectChange.previousCacheObject];
         
         objectChange.previousIndexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:oldSectionIndex];
     }
@@ -1233,12 +1233,12 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
                                                     forCacheObject:cacheObject];
     
     if (updatedObject) {
-        NSInteger newAllObjectIndex = [state.fetchResults indexOfObject:updatedObject];
+        long long newAllObjectIndex = [state.fetchResults indexOfObject:updatedObject];
         
         if (newAllObjectIndex != NSNotFound) {
             RBQSectionCacheObject *newSection = nil;
             
-            NSInteger newSectionIndex = 0;
+            long long newSectionIndex = 0;
             
             for (RBQSectionCacheObject *section in sectionChanges.sortedNewCacheSections) {
                 if (newAllObjectIndex >= section.firstObjectIndex &&
@@ -1252,7 +1252,7 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
                 newSectionIndex ++;
             }
             
-            NSInteger newRowIndex = newAllObjectIndex - newSection.firstObjectIndex;
+            long long newRowIndex = newAllObjectIndex - newSection.firstObjectIndex;
             
             objectChange.updatedCacheObject = cacheObject;
             objectChange.updatedIndexpath = [NSIndexPath indexPathForRow:newRowIndex
@@ -1331,7 +1331,7 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
     // Deleted Sections
     for (RBQSectionCacheObject *section in sectionChanges.deletedCacheSections) {
         
-        NSInteger oldSectionIndex = [sectionChanges.oldCacheSections indexOfObject:section];
+        long long oldSectionIndex = [sectionChanges.oldCacheSections indexOfObject:section];
         
         RBQFetchedResultsSectionInfo *sectionInfo =
         [RBQFetchedResultsSectionInfo createSectionWithName:section.name
@@ -1360,7 +1360,7 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
     // Inserted Sections
     for (RBQSectionCacheObject *section in sectionChanges.insertedCacheSections) {
         
-        NSInteger newSectionIndex = [sectionChanges.sortedNewCacheSections indexOfObject:section];
+        long long newSectionIndex = [sectionChanges.sortedNewCacheSections indexOfObject:section];
         
         RBQFetchedResultsSectionInfo *sectionInfo =
         [RBQFetchedResultsSectionInfo createSectionWithName:section.name
@@ -1678,7 +1678,7 @@ static void * RBQArrayFetchRequestContext = &RBQArrayFetchRequestContext;
                                 }];
         }
         
-        NSInteger relativeRowChange = rowInserts - rowDeletes;
+        long long relativeRowChange = rowInserts - rowDeletes;
         
         /**
          *  If an object is moving from one section to another,

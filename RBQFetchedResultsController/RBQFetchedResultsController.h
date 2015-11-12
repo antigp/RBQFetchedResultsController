@@ -216,7 +216,6 @@
  *
  *  @return the index of the section (returns NSNotFound if no section with the given name)
  */
-- (NSUInteger)sectionIndexForSectionName:(nonnull NSString *)sectionName;
 
 /**
  *  Retrieve the RBQSafeRealmObject for a given index path
